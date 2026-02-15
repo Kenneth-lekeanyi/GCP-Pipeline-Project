@@ -27,26 +27,29 @@ In this project, you will build a continuous integration pipeline using Cloud So
 
 **Task Distribution**
 
-**Task 1. Create a Git repository**
+**Task 1. Create a Git Repository**
 
-First, you will create a Git repository using the Cloud Source Repositories service in Google Cloud. This Git repository will be used to store your source code. Eventually, you will create a build trigger that starts a continuous integration pipeline when code is pushed to it.
+First, you will create a Git Repository using the **Cloud Source Repositories** service in Google Cloud. This Git Repository will be used to store your source code. Eventually, you will create a Build Trigger that starts a continuous integration pipeline when a code is pushed to it.
 
-1) In the Cloud Console, on the Navigation menu, click Source Repositories. A new tab will open.
-2) Click Add repository.
-3) Select Create new repository and click Continue.
-4) Name the repository devops-repo.
-5) Select your current project ID from the list.
-6) Click Create.
-7) Return to the Cloud Console, and click Activate Cloud Shell (Cloud Shell icon).
-8) If prompted, click Continue.
-9) Enter the following command in Cloud Shell to create a folder called gcp-course:
-mkdir gcp-course
-10) Change to the folder you just created:
-cd gcp-course
-11) Now clone the empty repository you just created:
-gcloud source repos clone devops-repo
-12) The previous command created an empty folder called devops-repo. Change to that folder:
-cd devops-repo
+1) In the Cloud Console, on the Navigation menu, click "Source Repositories". A new tab will open. it says "There is no repositories for this project".
+2) Locate and click on "Add repository" at the top far right corner of the page.
+3) Now, click on "Create new repository" and click on "Continue".
+4) Name the repository: **devops-repo**.
+5) Select your current project ID from the list by clicking inside the box of "Project".
+6) Click now on "Create".
+7) Now, Locate the CloudShell icon at the top right beside the small Bell icon and click on it to activate CloudShell. It will take a moment to come up.
+8) If prompted, click on "Continue".
+9) Now, enter the following command in CloudShell to create a folder called "gcp-course". So do:
+- `mkdir gcp-course`
+11) Do `ls` to ensure that the gcp-course Folder has been created succesfully.
+12) Now, change your location into the folder you just created. so do this to get inside this Folder:
+- `cd gcp-course`
+13) Now, clone the empty devops-repo Repository that you just created in Cloud Source Repository into this gcp-course Folder. So do:
+- `gcloud source repos clone devops-repo`
+13) if a warning pops up, just click on "Authorize".
+14) The previous command created an empty folder called devops-repo. Now, change to that folder. So do this to get into that repo:
+- `cd devops-repo`
+15) Do pwd to ensure that you are creating it inside the "devops-repo cloned Repository.
 
 **Task 2. Create a simple Python application**
 
