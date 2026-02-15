@@ -49,42 +49,57 @@ First, you will create a Git Repository using the **Cloud Source Repositories** 
 13) if a warning pops up, just click on "Authorize".
 14) The previous command created an empty folder called devops-repo. Now, change to that folder. So do this to get into that repo:
 - `cd devops-repo`
-15) Do pwd to ensure that you are creating it inside the "devops-repo cloned Repository.
+15) Do `pwd` to ensure that you are creating it inside the "devops-repo cloned Repository.
 
-**Task 2. Create a simple Python application**
+**Task 2. Create a simple Python application or that which is sent to you by the Developpers**
 
-You need some source code to manage. So, you will create a simple Python Flask web application. The application will be only slightly better than "hello world", but it will be good enough to test the pipeline you will build.
+You need some Source Code to manage. So, you will create a simple Python Flask Web Application. The Application will be only slightly better than "hello world", but it will be good enough to test the pipeline you will build.
 
-1) In Cloud Shell, click Open Editor (Editor icon) to open the code editor. If prompted click Open in a new window.
-2) Select the gcp-course > devops-repo folder in the explorer tree on the left.
-3) Click on devops-repo
-4) On the File menu, click New File
-5) Paste the following code into the file you just created:
-https://github.com/logicopslab/DevOpsProjectWithGCP/blob/main/main.py
-6) To save your changes. Press CTRL + S, and name the file as main.py.
-7) Click on SAVE
-8) Click on the devops-repo folder.
-9) Click on the File menu, click New Folder, Enter folder name as templates.
-10) Click OK
-11) Right-click on the templates folder and create a new file called layout.html.
-12) Add the following code and save the file as you did before:
-https://github.com/logicopslab/DevOpsProjectWithGCP/blob/main/layout.html
-13) Also in the templates folder, add another new file called index.html. Add the following code and save the file as you did before:
-https://github.com/logicopslab/DevOpsProjectWithGCP/blob/main/index.html
-14) In Python, application prerequisites are managed using pip. Now you will add a file that lists the requirements for this application.
-15) In the devops-repo folder (not the templates folder), create a New File and add the following to that file and save it as requirements.txt:
-https://github.com/logicopslab/DevOpsProjectWithGCP/blob/main/requirements.txt
-16) You have some files now, so save them to the repository. First, you need to add all the files you created to your local Git repo. In Cloud Shell, enter the following code:
-cd ~/gcp-course/devops-repo
-git add --all
-17) To commit changes to the repository, you have to identify yourself. Enter the following commands, but with your information (you can just use your Gmail address or any other email address):
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-18) Now, commit the changes locally:
-git commit -a -m "Initial Commit"
-19) You committed the changes locally, but have not updated the Git repository you created in Cloud Source Repositories. Enter the following command to push your changes to the cloud:
-git push origin master
-20) Refresh the Source Repositories web page. You should see the files you just created.
+1) In Cloud Shell, click on "Open Editor" to open the Editor. This icon is located just directly above the CloudShell Terminal. If prompted click Open in a new window. Wait for it to connect and open the Editor. It will open the gcp-course Folder, wherein, inside that Folder, we have our empty devops-repo that we had cloned.
+2) Now, select the {gcp-course > devops-repo} folder in the explorer tree on the left, just like in V.S Code. Do so by clicking on it. It is just located above README.Cloudshell.txt
+3) Click now on "devops-repo"
+4) Now, locate "**File**" just above "EXPLORER" and click on it. Then on the options, click on "New File", so that you have to write the code inside the Editor.
+5) Go to this Github link, ***https://github.com/Kenneth-lekeanyi/GCP-Pipeline-Project/blob/main/main.py*** and use the clipboard to copy the code under main.py and you come and paste it here in this Editor that you just created.
+6) To save your changes. Press **CTRL + S**,
+    - it ask you "Save As"
+    - Click to select "home"
+    - Then you click on "gcp-course"
+    - Then you click to select "devops-repo"
+    - Then you click on "Save".
+    - It will appear in Green. Click on "Untitled-1" and click on "rename" to rename it.
+    - Rename it as "main.py"
+    - Then click on "O.K"
+8) Click on "SAVE"
+9) Now, click on the "devops-repo" folder again.
+10) And then, you click on the File menu again, And then you click "New Folder". Now, Enter folder name as "templates".
+11) Click on "OK"
+12) Now, right-click on the "templates" folder and create a new file again called "layout.html".
+13) Make sure that the layout.html file is inside the template Folder.
+14) Now, go copy the code in this link ***https://github.com/Kenneth-lekeanyi/GCP-Pipeline-Project/blob/main/layout.html*** under layout.html and come paste in this layout editor as you did above.
+15) Also in the templates folder, add another new file called index.html.
+16) Then go copy the code in this link ***https://github.com/Kenneth-lekeanyi/GCP-Pipeline-Project/blob/main/index.html*** under index.html and come paste in this index.html editor as you did above.
+17) Also, in Python, Application prerequisites are managed using **pip***. Now you will add a file that lists the requirements for this Application.
+18) So, in the "devops-repo" folder ***(NOT inside the templates folder)***, create a New File There and name it as "requirements.txt"
+19) Now, add the code in this link ***https://github.com/Kenneth-lekeanyi/GCP-Pipeline-Project/blob/main/requirements.txt*** to that requirements.txt Editor and save it by doing **Command+S**:
+20) At this point, you have some files. So, save them to the repository.
+21) First, you need to add all the files you have created to your local Git repo. For that, go back to Cloud Shell. In CloudShell, first ensure that you are in the right location by doing;
+    - `cd ~/gcp-course` enter
+    - `cd ~/devops-repo` enter
+22) You will now be seated inside the "devops-repo" location. Now, while currently seating inside this devops-repo location, run this command to add those files to the Repo in our local staging area.
+    - `git add --all`
+23) This will add all the files inside the devops-repo local staging area. To see them, do
+ - `git status`
+- You will see those files all lined up, that need to be committed and push to the Cloud Source Repository.
+24) To commit the changes to our Cloud Source Repository, you have to first identify yourself. So, enter the following commands with your information. (you can just use your Gmail address or any other email address):
+    - `git config --global user.email "kenneth@gmail.com"` enter
+    - `git config --global user.name "Kenneth" enter
+25) Now, commit the changes to our local Repo. So, do
+- `git commit -a -m "Initial Commit"`
+26) With this, you have committed the changes locally, but have not push to the Cloud Source Repository you created earlier.
+27) You can see the Branch where the code is current in it by doing `git status` {You see that it says that "your branch  is based on 'origin/master' but the upstream is gone}.
+28) Now, enter the following command to push your changes to the Cloud Source Repository. So, do
+- `git push origin master`
+29) Now, go to the Cloud Source Repository and refresh the Cloud Source Repositories page. You should see the files "devops-repo" that you just created there.
 
 **Task 3. Define a Docker build**
 
