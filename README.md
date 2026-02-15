@@ -92,7 +92,7 @@ You need some Source Code to manage. So, you will create a simple Python Flask W
 - You will see those files all lined up, that need to be committed and push to the Cloud Source Repository.
 24) To commit the changes to our Cloud Source Repository, you have to first identify yourself. So, enter the following commands with your information. (you can just use your Gmail address or any other email address):
     - `git config --global user.email "kenneth@gmail.com"` enter
-    - `git config --global user.name "Kenneth" enter
+    - `git config --global user.name "Kenneth"` enter
 25) Now, commit the changes to our local Repo. So, do
 - `git commit -a -m "Initial Commit"`
 26) With this, you have committed the changes locally, but have not push to the Cloud Source Repository you created earlier.
