@@ -170,7 +170,7 @@ The Docker image has to be built and then stored somewhere. You will use CloudBu
 6) Keep these things like this as default, and scroll down to "Source"
 7) Now, under "Repositories" box, use the drop down to Select your "devops-repo Git repository" under repository dropdown as follows.
    - ***devops-repo(Cloud Source Repositories)***
-9) Select .*(any branch) for the branch. Branch: *****
+9) Select .*(any branch) for the branch. Branch: *
 10) Choose Dockerfile for Configuration and select the default image. Our image just pops up here.
 11) Accept the rest of the defaults, and click "Create."
     # Test the Trigger
