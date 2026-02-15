@@ -4,16 +4,17 @@ In this project, you will build a continuous integration pipeline using Cloud So
 
 ![0hYrmLCtV96fbLY7rct7Ue94xgf6OUG+O930FbxOeuA=](https://github.com/logicopslab/DevOpsProjectWithGCP/assets/82759985/c1dcc6c3-abb7-4925-8a71-b00b60ddbf80)
 
+- As you can see, the DevOps Engineer will push the Source Code into a Repository in GCP (known as Cloud Source Repository). This code will automatically trigger a build using a Trigger that is found inside CloudBuild. When it goes to the CloudBuild, CloudBuild will perform the build process and build the image of the Application. This image will be sent and stored in a Container Registry.
+- And from that Container Registry, you can create a VM and it will deploy in it.
+
 **Prerequisites**
 
 1) Google Cloud tools Cloud Source Repositories.
 2) Cloud Build.
 3) Build triggers. 
-4) Container Registry.
+4) Container Registry. 
 
-And, a bit of familiarity with GCP. 
-
-**Objectives - In this lab, you will learn how to perform the following tasks:**
+**Objectives **
 
 1) Create a Git repository
 2) Create a simple Python application
