@@ -2,6 +2,8 @@
 
 In this project, you will build a continuous integration pipeline using Cloud Source Repositories, Cloud Build, build triggers, and Container Registry.
 
+<img width="1149" height="620" alt="Image" src="https://github.com/user-attachments/assets/126e06de-fb43-473a-91f3-1f7a9a9cca56" />
+
 <img width="1598" height="830" alt="Image" src="https://github.com/user-attachments/assets/073ecac7-ba75-4422-b413-7f31d437f732" />
 
 - As you can see, the DevOps Engineer will push the Source Code into a Repository in GCP (known as Cloud Source Repository). This code will automatically trigger a build using a Trigger that is found inside CloudBuild. When it goes to the CloudBuild, CloudBuild will perform the build process and build the image of the Application. This image will be sent and stored in a Container Registry.
