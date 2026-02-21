@@ -217,3 +217,181 @@ def main():
 9) The Application comes up as "**Hello! Welcome to the GCP DevOps Project**"
 
 **Note**: You might have to wait a few minutes after the VM is created for the Docker container to start.
+CICD PIPELINE TO DEPLOY APPLICATIONS ON GOOGLE KUBERNETES ENGINE (GKE) USING CLOUDBUILD $ CLOUD-DEPLOY.
+Objective: To deploy Applications on GKE Cluster using CloudBuild and Cloud-Deploy.
+Here we are implementing a complete automation or said CI CD pipeline automation where users will push an application code to a git repository once it is pushed it will trigger a cloud boot to start the boot automatically. This is done using a beauty trigger.
+Here cloud build we put a docker image from the application code and once it is done we pushed that image to an artifactual registry or container history.
+And that we also trigger a cloud bill pipeline. Cloud diploid we first deployer latest container image or docker image to the deaf cognitive cluster cheeky and when everything is tested on giving a green check then you can promote it to production. 
+But before it goes to production there is an option that we can set up which is approval before it proceeded into the production environment.
+And once the approval is done it will then be diploid into a cognitive engine.
+So cloud deploy is a managed service that automates delivery of your applications to a series of environments such a GKE and cloud run.
+Therefore in cloud deploy we basically created pipeline wherein in that pipeline we maintain we mentioned the target this target is nothing but a G key cluster and so anytime that you want to deploye him a new code you just create a release any releases nothing but diploid or promoting your code or releasing a new code to the existing application.
+Then we have cloud deploy then we can use manifest files to push it to the cluster and with that action at the back in it will create your community scaffold file itself for the application.
+Oh yeah we should have two clusters where in cluster one will be the death cluster well close to 2 will be the pro cluster. So go to carbon etic engine console and create 2 clusters first.
+Step One: Create 2 Clusters.
+To create a GK cluster.
+-	Navigate to the console and type to search for Jackie and click on carbon etic engine
+-	anybody API
+-	now locate and click on clusters at the left
+-	then you now click on let's get started sing it is the first time to create the cluster
+-	at the top right hand side look it and click on switch to standard cluster
+-	then click on switch to standard cluster at the bottom of the popup page
+-	. This is the cause we are switching from standard to autopilot because here in autopilot it is best for.
+-	That is the reason why we are switching to standard wearing here in standard you are the one to decide the number of notes that you want no fixed minimum you can decide to just create only one note for death and test create note is common for prods higher availability.
+-	So at the top right it will give you the ability to switch from standard to autopilot.
+-	Not however that with autopilot clusters Google cloud takes care of
+-	note automotive note creation scaling and maintenance
+-	networking VPC net native traffic routing from public to private clusters
+-	security sheer cheeky note and cook and workloads identity
+-	elementary cloud pression logging and monitoring
+-	nim cluster one def cluster 
+-	location: zona regional
+-	if you take original it will activate clusters per region so go with his owner
+-	region:
+-	vision:  that one
+-	click on not pool
+-	then click on default
+-	name of the pool before pool
+-	size 2
+-	enable cluster auto scaler: this will scare the note depending on the usage same behavior as in managed instance group of this killer so you have the opportunity to scale the notes here so too you can enable Papa scaling under automation so as to respectively skill the port using manifest files so make sure that auto scaling is enabled both at the note level an add a port level when creating the cluster show us to smoothly permit perfect and smooth scaling by the orchestration to using replica set.
+-	Now scroll up on the left and click on notes under default pool.
+-	Image type: Cortana optimize OS with container default
+-	machine configuration: general purpose
+-	series: E2
+-	missing type: E2 standard 2
+-	would this type: balance persistent disk
+-	boot pics size: 60
+-	now scroll up and select the next option networking. This is the network that has to do with the cluster itself so Google cloud uses its own internal network they don't use those external network tools like calico and flanel this year network is to boost security so don't do anything here.
+-	Scroll down and click on security
+-	here leave everything as default
+-	Scroll down and locate metadata and click on it
+-	ah nothing to add here as well
+-	click on automation
+-	auto scaling
+-	enable vertical port auto scaling
+-	anyone know auto provisioning
+-	enable maintenance window: this is for every upgrade to be implemented at the time it is made available.
+-	Weekly editor customer editor
+-	start time: 
+-	length: for us
+-	D days Monday Tuesday organization Thursday Friday Saturday Sunday
+-	click on networking on the left
+-	network: default VPC
+-	not subnet: default
+-	so this cluster will come up with VM's which we add as worker notes so there will be using the VPC and subnet
+-	IPV 4 network access
+-	public cluster
+-	private cluster
+-	if your pot will be accessible to users in the public check this one
+-	now scroll up and click on security on the left
+-	enable binary authorization {this is used in pulling the image from docker hub but we don't need it for now}
+-	in a move enable vulnerability scanning {this is used to be scanning pots}
+-	click now on backup plan
+-	click on features now
+-	enable login
+-	enable cloud monitoring
+-	enable managed service for Prometheus
+-	enable compute engine persistent disk
+-	now click on create to create a cluster
+-	Step Two: Logging into the Cluster:
+-	Did we exist to log into the cluster
+-	one login through cloud share in the console
+-	to log in from your local machine using VS code Terri creative VM instance and logging from the deployer VM instance
+-	1st Approach:
+-	To connect to the cluster,
+-	click on those three dots at the right
+-	connect to the cluster edit 
+-	note you can use this command to interact with a cluster locally so far as you have G cloud install in your local however pay for cognitive is capacity are you need to have ***** ETL installed locali for it to be able to interact with this cluster from your local so you will be able to log in but you will not be able to even see the notes.
+-	So at this point we can order from this in cloud shell and interact with the cluster from cloud shell
+-	now paste the command in cloud share and hit enter
+-	now take authorize
+-	if you see this nor that everything went through successfully
+-	keep config entry generated for test envy cluster
+-	note that it has locked you into the cluster so run this command to see if you can reach the cluster itself
+-	keep CTL get notes enter
+-	keep CDN get namespace keep CTL get service
+-	you will see that you have one and that is the cluster IP
+-	2nd Approach:
+-	Now we're going to look into the cluster from our local via scope. This we need to set up an install keep city L in your local machine.
+-	For Windows:
+-	to install keep CDL CLI or keep CDL on windows, first of all install chocolatey. So
+-	go to the taskbar down the screen and type to search for PowerShell.
+-	I see pop up click on power share at the top
+-	then right click on run a sub ministrator to populate the PowerShell command prompt in the PowerShell command prompt that comes up run this command set execution policy or signed
+-	yes or no tap why
+-	run this command get execution policy
+-	it says all signed
+-	now from this command
+-	set executionpolicy bypass coop process
+-	see this command in the readme fire under replica set in VS code and copy it from there
+-	no check to confirm that chocolatey is installed successfully. Type joko enter
+-	it says chocolatey version 10.15
+-	now chocolate is successfully installed in our window machine. Let's proceed to install keep CDL command or keep CDL. So run this command
+-	choco install Kubernetes CLI
+-	type yes
+-	now check to confirm that keeps tell is installed successfully. So do keep city L vision dash dash client
+-	now open a new PowerShell and run this command
+-	keep still version does does client
+-	division comes up there as well
+-	For MacOs;
+-	to install CLI or keep CTL on Mac, this first of all install homebrew
+-	so run this command brew install keep city L enter
+-	now check to confirm that keep CDL is installed successfully. So do keep CDL vision data client enter
+-	it version comes up as virtual 2
+-	this means that keeps your install successfully
+-	now bring up your VS code or PowerShell in windows open up your terminal now we are going to create a folder called dot keep in our homebrew directory
+-	so first of all go to home directory so do
+-	cd enter.
+-	At this time if you try to connect to the cluster that has just been created from your local via school terminal, by copying the connect command in the cluster and running it in the vehicle terminal, it will error out.
+-	So we have to 1st install G key components in our local in order to be able to connect to the cluster from our local.
+-	So first check to ensure that cloud SDK is installed successfully in your local system. Check it by twin
+-	GSU TLS
+-	it says updates are available to install them rogic clear component updates
+-	so cloud SDK is installed successfully
+-	now go back to the cluster in the console, click on connect and click on run in cloud share
+-	as the closure terminal comes up, hit enter button in our keyboard
+-	then click on authorize
+-	as it is connected to the cluster from the cloud share terminal, 
+-	do dot keep enter
+-	it says catch config GKE dash cloud dash of dash plugin dash cash
+-	so they have it in our cluster so doc folder is there now cut the dot cube directory so do
+-	cat.com/config enter
+-	now copy the content of this file. Copy from API version
+-	now go to your VS code
+-	stay in home directory do vi.com/config
+-	so we are creating this doc slash config file locally or in our local so as to have that contender you saw in the cluster available in our local as well for us to use it to connect to the cluster.
+-	Now change to insert mode
+-	based that content that you copied from cloud share close to here
+-	now change to escape mode then say fun quit
+-	no it says error
+-	paste the cluster connection command here and hit enter
+-	it says error again fishing cluster endpoint and author data
+-	not do this to look into G cloud
+-	G cloud outlook in
+-	follow the page unlocking to the accountant has disclosed today
+-	once you are login
+-	recall and run the command again that is the cluster connection command which is
+-	it says critical action required
+-	now we have to install one more plug in for G key that is the key component. So copy this URL above in the critical action from HTTPS all the way to the end
+-	bring up a new browser
+-	paste the URL in search bar of a new browser
+-	there is a G club command that we need from that URL page
+-	it says here is what to know about changes to keep CDL authentication coming in GTE version 1.26
+-	now screw down
+-	on that install using G cloud component installed
+-	copy this commander G cloud component install GE cloud off plug in
+-	now open your VS code terminal and run this command
+-	G cloud component installed gke cloud off plug in
+-	it says do you want to continue type way and hit enter
+-	now try logging into the cluster now using the cluster connect command which is
+-	G cloud container cluster get credential GK cluster
+-	so this command fetches the cluster credential and use it to lock you in to the cluster
+-	it says
+-	fetching cluster endpoint and off data
+-	keep config entry generated for GTE cluster
+-	now it has locked you into the cluster successfully
+-	So this GCG cloud of plug in is a utility for G cloud within cloud SDK so you have to install it then you use it to log in into the GT cluster so that is what we have just done talking to the cluster from our local Brandon going to the browser every time to lock it our own time set
+-	as we are now inside the cluster Lester testing things do keep city L get notes
+-	do not see your note which already from your locker
+-	now we are going to create a cognitive manifest file for specific kinetic objects which we shall be able to use it to do some testing.
+
