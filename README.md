@@ -233,10 +233,10 @@ And once the approval is done it will then be diploid into a cognitive engine.
 - So, go to the Kubernetes Engine console and create 2 clusters first.
 
 # Step One: Create 2 Clusters.
-To create a GK cluster.
--	Navigate to the console and type to search for Jackie and click on carbon etic engine
--	anybody API
--	now locate and click on clusters at the left
+***To create a GK cluster.***
+-	Navigate to the Console and type to search for "GKE" and click on "Kubernetes engine".
+-	Then you Enable the API
+-	Now, locate and click on "clusters" at the left
 -	then you now click on let's get started sing it is the first time to create the cluster
 -	at the top right hand side look it and click on switch to standard cluster
 -	then click on switch to standard cluster at the bottom of the popup page
