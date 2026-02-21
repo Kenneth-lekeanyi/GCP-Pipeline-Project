@@ -217,18 +217,22 @@ def main():
 9) The Application comes up as "**Hello! Welcome to the GCP DevOps Project**"
 
 **Note**: You might have to wait a few minutes after the VM is created for the Docker container to start.
-CICD PIPELINE TO DEPLOY APPLICATIONS ON GOOGLE KUBERNETES ENGINE (GKE) USING CLOUDBUILD $ CLOUD-DEPLOY.
-Objective: To deploy Applications on GKE Cluster using CloudBuild and Cloud-Deploy.
-Here we are implementing a complete automation or said CI CD pipeline automation where users will push an application code to a git repository once it is pushed it will trigger a cloud boot to start the boot automatically. This is done using a beauty trigger.
-Here cloud build we put a docker image from the application code and once it is done we pushed that image to an artifactual registry or container history.
-And that we also trigger a cloud bill pipeline. Cloud diploid we first deployer latest container image or docker image to the deaf cognitive cluster cheeky and when everything is tested on giving a green check then you can promote it to production. 
-But before it goes to production there is an option that we can set up which is approval before it proceeded into the production environment.
+
+# CICD PIPELINE TO DEPLOY APPLICATIONS ON GOOGLE KUBERNETES ENGINE (GKE) USING CLOUDBUILD $ CLOUD-DEPLOY.
+
+**Objective:** ***To deploy Applications on GKE Cluster using CloudBuild and Cloud-Deploy.***
+- Here, we are implementing a complete automation or CICD Pipeline automation where users will push an Application Source Code to a git repository. Once it is pushed, it will trigger a CloudBuild to start the build automatically. This is done using a Build Trigger.
+- Here CloudBuild will build and push a docker image using the Application code and once it is done, it will pushed that image to an Artifactual Registry or Container Registry.
+- And that will also trigger a Cloud-Deploy pipeline. Cloud-Deploy will first deploy the latest container image or docker image to the Dev GKE Cluster. And when everything is tested in the Dev Kubernetes Cluster, then you can promote it to Production in the Prod Cluster. 
+- But before it goes to production, there is an option that we set up which is "**Manual Approval**" before it proceeded into the Production Environment.
 And once the approval is done it will then be diploid into a cognitive engine.
-So cloud deploy is a managed service that automates delivery of your applications to a series of environments such a GKE and cloud run.
-Therefore in cloud deploy we basically created pipeline wherein in that pipeline we maintain we mentioned the target this target is nothing but a G key cluster and so anytime that you want to deploye him a new code you just create a release any releases nothing but diploid or promoting your code or releasing a new code to the existing application.
-Then we have cloud deploy then we can use manifest files to push it to the cluster and with that action at the back in it will create your community scaffold file itself for the application.
-Oh yeah we should have two clusters where in cluster one will be the death cluster well close to 2 will be the pro cluster. So go to carbon etic engine console and create 2 clusters first.
-Step One: Create 2 Clusters.
+- So, Cloud-Deploy is a managed service that automates delivery of your Applications to a series of environments such a GKE and cloud-Run.
+- Therefore in cloud-Deploy, we basically create a Pipeline wherein, in that Pipeline we mention the target. This target is nothing but a GKE Cluster. And so anytime that you want to deploye a new code you just create a release. And a release is nothing but diploying or promoting your code or releasing a new code to the existing application.
+- Then we have Cloud-Deploy that we can use manifest files to push it to the Cluster. And with that action at the back in it will create your community scaffold file itself for the application.
+- We shall have two clusters wherein cluster1 will be the Dev Cluster while Cluster2 will be the Prod Cluster.
+- So, go to the Kubernetes Engine console and create 2 clusters first.
+
+# Step One: Create 2 Clusters.
 To create a GK cluster.
 -	Navigate to the console and type to search for Jackie and click on carbon etic engine
 -	anybody API
