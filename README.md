@@ -235,70 +235,70 @@ And once the approval is done it will then be diploid into a cognitive engine.
 # Step One: Create 2 Clusters.
 ***To create a GK cluster.***
 -	Navigate to the Console and type to search for "GKE" and click on "Kubernetes engine".
--	Then you Enable the API
+-	Enable the API
 -	Now, locate and click on "clusters" at the left
--	then you now click on let's get started sing it is the first time to create the cluster
--	at the top right hand side look it and click on switch to standard cluster
--	then click on switch to standard cluster at the bottom of the popup page
--	. This is the cause we are switching from standard to autopilot because here in autopilot it is best for.
--	That is the reason why we are switching to standard wearing here in standard you are the one to decide the number of notes that you want no fixed minimum you can decide to just create only one note for death and test create note is common for prods higher availability.
--	So at the top right it will give you the ability to switch from standard to autopilot.
--	Not however that with autopilot clusters Google cloud takes care of
--	note automotive note creation scaling and maintenance
--	networking VPC net native traffic routing from public to private clusters
--	security sheer cheeky note and cook and workloads identity
--	elementary cloud pression logging and monitoring
--	nim cluster one def cluster 
--	location: zona regional
--	if you take original it will activate clusters per region so go with his owner
--	region:
--	vision:  that one
--	click on not pool
--	then click on default
--	name of the pool before pool
--	size 2
--	enable cluster auto scaler: this will scare the note depending on the usage same behavior as in managed instance group of this killer so you have the opportunity to scale the notes here so too you can enable Papa scaling under automation so as to respectively skill the port using manifest files so make sure that auto scaling is enabled both at the note level an add a port level when creating the cluster show us to smoothly permit perfect and smooth scaling by the orchestration to using replica set.
--	Now scroll up on the left and click on notes under default pool.
--	Image type: Cortana optimize OS with container default
--	machine configuration: general purpose
--	series: E2
--	missing type: E2 standard 2
--	would this type: balance persistent disk
--	boot pics size: 60
--	now scroll up and select the next option networking. This is the network that has to do with the cluster itself so Google cloud uses its own internal network they don't use those external network tools like calico and flanel this year network is to boost security so don't do anything here.
--	Scroll down and click on security
--	here leave everything as default
--	Scroll down and locate metadata and click on it
--	ah nothing to add here as well
--	click on automation
--	auto scaling
--	enable vertical port auto scaling
--	anyone know auto provisioning
--	enable maintenance window: this is for every upgrade to be implemented at the time it is made available.
--	Weekly editor customer editor
--	start time: 
--	length: for us
--	D days Monday Tuesday organization Thursday Friday Saturday Sunday
--	click on networking on the left
--	network: default VPC
--	not subnet: default
--	so this cluster will come up with VM's which we add as worker notes so there will be using the VPC and subnet
--	IPV 4 network access
--	public cluster
--	private cluster
--	if your pot will be accessible to users in the public check this one
--	now scroll up and click on security on the left
--	enable binary authorization {this is used in pulling the image from docker hub but we don't need it for now}
--	in a move enable vulnerability scanning {this is used to be scanning pots}
--	click now on backup plan
--	click on features now
--	enable login
--	enable cloud monitoring
--	enable managed service for Prometheus
--	enable compute engine persistent disk
--	now click on create to create a cluster
--	Step Two: Logging into the Cluster:
--	Did we exist to log into the cluster
+-	Then you now click on "let's get started" since it is the first time to create the cluster,
+  - At the top right hand side locate and click on "SWITCH TO STANDARD CLUSTER".
+  - Then click on "switch to standard cluster" at the bottom of the poped up page.
+-	***{This is because we are switching from standard to auto-pilot because here in auto-pilot it is best for Prod grade tasks. And in Standard, you have to manage more configuration settings in your cluster and Nodes called Node-Pool. And here under Auto-pilot, the minimum amount of Nodes that we can have here is 3. (which is a huge number of instances and thus so costly as well)}***. 
+- ***That is the reason why we are switching to standard wherein here in standard you are the one to decide the number of Nodes that you want. And you are the one to decide the minimum that you want to create. If you want just one node for Dev/Test, you can do it. With Auto-pilot, it is good for Prods higher availability***.
+-	So at the top right, it will give you the ability to switch from STANDARD to AUTO-PILOT.
+-	Note however that with autopilot clusters Google Cloud takes care of the following:
+      - Node: Automoted node creation scaling and maintenance
+      - Networking: VPC-native traffic routing from public to private clusters
+      - Security: Shield GKE Nodes and workloads identity
+      - Telementary: Cloud operation logging and monitoring.
+-	Name: **cluster1-def-cluster** 
+-	location: zona [select this one]
+              - regional ***{if you take Regional, it will add 3 clusters per region. so go with his zonal}***
+-	Region: **US-east-1**
+-	Version: ***{Select the specific GKE version that you want (default version is 1.29.6)}***
+-	Click on "Node Pool"
+-	Then click on "default-Pool"
+-	Name of the pool: **default-Pool**
+-	Size: **2**
+-	[] Enable cluster auto-scaler: **Check this box**. ***{this will scale the Nodes depending on the usage, same behavior as in MIG Auto-scaler. So, you have the opportunity to scale the Nodes here. So too you can enable Pode auto-scaling under automation, so as to respectively scale the Pods using manifest files. Therefore, make sure that Auto-scaling is enabled both at the Node level an add a Pod level when creating the cluster, so as to smoothly permit perfect and smooth scaling by the orchestration tool using Replica set.}***
+-	Now scroll up on the left and click on "Nodes" under default pool.
+  - Image type: **Container-optimized OS with container (default)**
+  - Machine Configuration: **General purpose**
+  - Series: **E2**
+  - Machine type: **E2-standard-2**
+  - Boot Disk type: **Balanced Persistent Disk**
+  - Boot Disk size: **60**
+-	Now, scroll up and select the next option "Networking". This is the network that has to do with the cluster itself. So, Google cloud uses its own internal network. They don't use external network tools like [calico] and [flanel] this their network is to boost security so don't do anything here.
+-	Scroll down and click on "Security"
+  - Here leave everything as default
+-	Scroll down and locate "metadata" and click on it
+  - Nothing to add here as well
+-	click on "Automation"
+  - Auto-scaling
+      - [] Enable Vertical Pod auto-scaling
+      - [] Enable Node auto provisioning
+      - [] Enable maintenance window: ***{this is for every upgrade to be implemented at the time it is made available}***.
+-	[] Weekly editor customer editor. ***{Check this box on weekly editor}***
+-	[] start time: ***12:00am***
+-	[] Length: ***4hrs***
+-	[] Days: ***Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday***
+-	Click on networking on the left
+  - Network: ***default VPC***
+  - Node subnet: ***default (10.28.0.0/20)*** {so this cluster will come up with VMs which will act as Worker Nodes. so there will be using this VPC and subnet}
+  - IPV 4 network access
+  - [] Public cluster {if your Pods will be accessible to users in the public check this one}
+  - [] Private cluster
+-	Now, scroll up and click on "security" on the left
+  - [] Enable Binary Authorization {this is used in pulling the image from DockerHub. But we don't need it for now}
+  - [] Enable Vulnerability Scanning {this is used to be scanning Pods}.
+-	click now on "Backup plan"
+-	click on "Features" now
+   - [] Enable loggin
+  - [] Enable Cloud Monitoring
+  - [] Enable managed service for Prometheus
+  - [] Enable compute engine persistent disk
+-	Now click on "create" to create the cluster.
+
+  
+# Step Two: Logging into the Cluster:
+-	There exist 3 ways to log into the cluster
 -	one login through cloud share in the console
 -	to log in from your local machine using VS code Terri creative VM instance and logging from the deployer VM instance
 -	1st Approach:
