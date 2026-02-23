@@ -303,7 +303,7 @@ And once the approval is done it will then be diploid into a cognitive engine.
 2) login from your local machine using VS Code
 3) login from a VM instance i.e from the deployer VM instance
    
--	# 1st Approach:connecting to the cluster from CloudShell,
+-	# 1st Approach:connecting to the cluster from CloudShell.
 1) click on those three dots at the right
 2) connect to the cluster.
 3) Edit this cluster or Delete this cluster 
@@ -394,30 +394,33 @@ And once the approval is done it will then be diploid into a cognitive engine.
 -	`gcloud auth login`
 -	Now, follow the page and login to the Account that has Cluster there.
 -	Once you are login;
-
--	
--	recall and run the command again that is the cluster connection command which is
--	it says critical action required
--	now we have to install one more plug in for G key that is the key component. So copy this URL above in the critical action from HTTPS all the way to the end
--	bring up a new browser
--	paste the URL in search bar of a new browser
--	there is a G club command that we need from that URL page
--	it says here is what to know about changes to keep CDL authentication coming in GTE version 1.26
--	now screw down
--	on that install using G cloud component installed
--	copy this commander G cloud component install GE cloud off plug in
--	now open your VS code terminal and run this command
--	G cloud component installed gke cloud off plug in
--	it says do you want to continue type way and hit enter
--	now try logging into the cluster now using the cluster connect command which is
--	G cloud container cluster get credential GK cluster
--	so this command fetches the cluster credential and use it to lock you in to the cluster
--	it says
--	fetching cluster endpoint and off data
--	keep config entry generated for GTE cluster
--	now it has locked you into the cluster successfully
--	So this GCG cloud of plug in is a utility for G cloud within cloud SDK so you have to install it then you use it to log in into the GT cluster so that is what we have just done talking to the cluster from our local Brandon going to the browser every time to lock it our own time set
--	as we are now inside the cluster Lester testing things do keep city L get notes
--	do not see your note which already from your locker
--	now we are going to create a cognitive manifest file for specific kinetic objects which we shall be able to use it to do some testing.
+-	Recall and run the command again (i.e the cluster connection command which is)
+-	`gcloud container cluster get-cedentials gke-cluster --zone us-central1-c --project manifest-stream-424502-s1`
+-	It says
+-	{***CRITICAL: Action Required: gke-gcloud-auth-plugin, which --- in-gke --install gke-gcloud-auth-plugin for use with kubectl by following https://cloud.gcloud.com/blog/products/containers-kubernetes/kubectl-auth-changes-ingke***}
+-	Now, we have to install one more plugin for gke (i.e the key component).
+-	So, copy this URL above in the critical action from HTTPS all the way to the end
+-	Bring up a new browser
+  - Paste the URL in the search bar of a new Browser. ***{there is a gcloud command that we need from that URL page}***
+-	It says "**Here is what to know about changes to kubectl authentication coming in GKE v1.26**"
+  - Now screw down
+  - Under "install using 'gcloud component installed', copy this commander there" `gcloud components install gke-cloud-auth-plugin`
+-	Now, open your VS Code Terminal and run this command
+-	`gcloud components install gke-cloud-auth-plugin`
+-	it says ***"Do you want to continue (Y/N)?"***
+-	Type **y** in your keyboard and hit enter
+-	Now, try to loggin to the cluster now using the cluster connect command which is `gcloud container cluster get-cedentials gke-cluster --zone us-central1-c --project manifest-stream-424502-s1` ***{So this command fetches the Cluster credentials, and use it to log you into the cluster}***
+-	Now, it says;
+  - ***{fetching cluster endpoint and auth data. **kubeconfig entry generated for gke-cluster**.}***
+  - [Now, it has logged you into the cluster successfully]
+  - 
+-	So, the "gke-gcloud-auth-plugin" is a pluggin used to authenticate you to the cluster. So, you need to have that available. Remember gcloud is just a utility for Cloud SDK.
+-	 So, this "gke-gcloud-auth-plugin" is a utility for gcloud within cloud SDK. So, you have to install it, then you use it to log into the gke cluster. So, that is what we have just done to log into the cluster from our local rather than going to the browser every time to login from there. (it is a one time setup).
+-	As we are now inside the cluster, Lets start testing things. So do
+-	`kubectl get node`
+-	You now see your Nodes which are ready, from your local.
+-	Now, we are going to create a Kubernetes manifest file for specific kubernetes object which we shall be able to use it to do some testing.
+Now, we are going to create a Replicaset for nginx and deploy that nginx Replicaset using the -f command.
+So, first create a File in V.S Code and name it as
+**nginx-replicaset.yaml**
 
