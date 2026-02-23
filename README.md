@@ -422,5 +422,6 @@ And once the approval is done it will then be diploid into a cognitive engine.
 -	Now, we are going to create a Kubernetes manifest file for specific kubernetes object which we shall be able to use it to do some testing.
 Now, we are going to create a Replicaset for nginx and deploy that nginx Replicaset using the -f command.
 So, first create a File in V.S Code and name it as
-**nginx-replicaset.yaml**
+ - **nginx-replicaset.yaml**
+ - ![Image](https://github.com/user-attachments/assets/ee36a8c6-7269-44e4-b759-0ee336e88ece)
 
