@@ -299,81 +299,103 @@ And once the approval is done it will then be diploid into a cognitive engine.
   
 # Step Two: Logging into the Cluster:
 -	There exist 3 ways to log into the cluster
--	one login through cloud share in the console
--	to log in from your local machine using VS code Terri creative VM instance and logging from the deployer VM instance
--	1st Approach:
--	To connect to the cluster,
--	click on those three dots at the right
--	connect to the cluster edit 
--	note you can use this command to interact with a cluster locally so far as you have G cloud install in your local however pay for cognitive is capacity are you need to have ***** ETL installed locali for it to be able to interact with this cluster from your local so you will be able to log in but you will not be able to even see the notes.
--	So at this point we can order from this in cloud shell and interact with the cluster from cloud shell
--	now paste the command in cloud share and hit enter
--	now take authorize
--	if you see this nor that everything went through successfully
--	keep config entry generated for test envy cluster
--	note that it has locked you into the cluster so run this command to see if you can reach the cluster itself
--	keep CTL get notes enter
--	keep CDN get namespace keep CTL get service
--	you will see that you have one and that is the cluster IP
--	2nd Approach:
--	Now we're going to look into the cluster from our local via scope. This we need to set up an install keep city L in your local machine.
--	For Windows:
--	to install keep CDL CLI or keep CDL on windows, first of all install chocolatey. So
--	go to the taskbar down the screen and type to search for PowerShell.
--	I see pop up click on power share at the top
--	then right click on run a sub ministrator to populate the PowerShell command prompt in the PowerShell command prompt that comes up run this command set execution policy or signed
--	yes or no tap why
--	run this command get execution policy
--	it says all signed
--	now from this command
--	set executionpolicy bypass coop process
--	see this command in the readme fire under replica set in VS code and copy it from there
--	no check to confirm that chocolatey is installed successfully. Type joko enter
--	it says chocolatey version 10.15
--	now chocolate is successfully installed in our window machine. Let's proceed to install keep CDL command or keep CDL. So run this command
--	choco install Kubernetes CLI
--	type yes
--	now check to confirm that keeps tell is installed successfully. So do keep city L vision dash dash client
--	now open a new PowerShell and run this command
--	keep still version does does client
--	division comes up there as well
--	For MacOs;
--	to install CLI or keep CTL on Mac, this first of all install homebrew
--	so run this command brew install keep city L enter
--	now check to confirm that keep CDL is installed successfully. So do keep CDL vision data client enter
--	it version comes up as virtual 2
--	this means that keeps your install successfully
--	now bring up your VS code or PowerShell in windows open up your terminal now we are going to create a folder called dot keep in our homebrew directory
--	so first of all go to home directory so do
--	cd enter.
--	At this time if you try to connect to the cluster that has just been created from your local via school terminal, by copying the connect command in the cluster and running it in the vehicle terminal, it will error out.
--	So we have to 1st install G key components in our local in order to be able to connect to the cluster from our local.
--	So first check to ensure that cloud SDK is installed successfully in your local system. Check it by twin
--	GSU TLS
--	it says updates are available to install them rogic clear component updates
--	so cloud SDK is installed successfully
--	now go back to the cluster in the console, click on connect and click on run in cloud share
--	as the closure terminal comes up, hit enter button in our keyboard
--	then click on authorize
--	as it is connected to the cluster from the cloud share terminal, 
--	do dot keep enter
--	it says catch config GKE dash cloud dash of dash plugin dash cash
--	so they have it in our cluster so doc folder is there now cut the dot cube directory so do
--	cat.com/config enter
--	now copy the content of this file. Copy from API version
--	now go to your VS code
--	stay in home directory do vi.com/config
--	so we are creating this doc slash config file locally or in our local so as to have that contender you saw in the cluster available in our local as well for us to use it to connect to the cluster.
--	Now change to insert mode
--	based that content that you copied from cloud share close to here
--	now change to escape mode then say fun quit
--	no it says error
--	paste the cluster connection command here and hit enter
--	it says error again fishing cluster endpoint and author data
--	not do this to look into G cloud
--	G cloud outlook in
--	follow the page unlocking to the accountant has disclosed today
--	once you are login
+1) login through Cloudshell in the console
+2) login from your local machine using VS Code
+3) login from a VM instance i.e from the deployer VM instance
+   
+-	# 1st Approach:connecting to the cluster from CloudShell,
+1) click on those three dots at the right
+2) connect to the cluster.
+3) Edit this cluster or Delete this cluster 
+-	Note: You can use this command to interact with a cluster locally so far as you have gcloud install in your local. However since the CLI for Kubernetes is kubectl, you need to have kubectl installed localy for it to be able to interact with this cluster from your local.
+- So, you will be able to login but you will not be able to even see the Nodes.
+-	So, at this point we can only run the commands from CloudShell and interact with the cluster from Cloudshell.
+-	So, either you click on "RUN IN CLOUDSHELL" or you copy the command and go run it in Cloudshell.
+-	Now, paste the command in Cloudshell and hit enter
+-	Now, take "Authorize"
+-	if you see this know that everything went through successfully
+-	`kubconfig entry generated for test-envy-cluster`
+-	Know that it has logged you into the cluster. So, run this command to see if you can reach the cluster itself
+-	`kubectl get nodes`
+-	`kubectl get namespace`
+-	`kubectl get service`
+-	You will see that you have one and that is the cluster IP.
+-	
+-	# 2nd Approach: Connecting to the  from our local VS Code.
+-	Now we're going to log into the cluster from our local VS Code. This, we need to set up an install kubectl in your local machine.
+
+-	**[For Windows:]**
+-	To install the kubernetes CLI or kubectl on windows, first of all install chocolatey. So
+-	Go to the taskbar down the screen and type to search for "PowerShell".
+-	As it pops up, click on Powershell at the top.
+-	Then right click on "Run as Administrator" to populate the PowerShell command-prompt
+-	In the PowerShell command-prompt that comes up, run this command
+-	`Set-ExecutionPolicy AllSigned`
+-	Then type **y** to enter
+-	Now, run this command
+-	`Get-ExecutionPolicy`
+  - it says ***AllSigned***
+-	Now, run this command
+-	`Set-ExecutionPolicy Bypass-Scop Process___'))`
+-	See this command in the READMME.md File under "Replicaset" in VS Code and copy it from there.
+-	Now, check to confirm that "chocolatey" is installed successfully. Type "Choco" [enter]
+-	it says "chocolatey version 10.10.15
+-	
+-	Now, chocolatey is successfully installed in our window machine. Let's now proceed to install kubernetes CLI. So, run this command :
+-	`choco install Kubernetes-CLI`
+-	Type: **yes**
+-	Now, check to confirm that kubectl is installed successfully. So do
+-	`kubectl version --client`
+-	Now, open a new PowerShell and run this command
+-	`kubectl version --client`
+-	
+-	**[For MacOs;]**
+-	To install kubernetes CLI or kubectl on Mac, lets first of all install "Homebrew"
+-	So, run this command
+-	`brew install kubectl`
+-	Now, check to confirm that kubectl is installed successfully. So do
+-	`kuctl version --client`
+-	it version comes up
+-	Meaning that kubectl has been installed succeasfully.
+-	
+-	Now, bring up your VS Code or PowerShell in windows open up your terminal
+-	Now, we are going to create a folder called **.kube** in our Home Directory.
+-	So, first of all go to Home Directory. So do
+-	`cd` [enter]
+-	***{At this time if you try to connect to the cluster that has just been created from your local V.S Code terminal, by copying the connect command in Cloudshell and running it in the V.S Code terminal, it will error out. So, we have to first of all install gcloud components in our local in order to be able to connect to the cluster from our local.}***
+-	So first check to ensure that cloud SDK is installed successfully in your local system. Check it by doing
+-	`gautile ls`
+-	It says "updates are available to install them, run
+-	`gcloud component updates`
+-	So, Cloud SDK is installed successfully.
+-	
+-	Now, go back to the cluster in the console, click on "connect" and click on "RUN IN CLOUDSHELL"
+-	As the Cloudshell terminal comes up, hit [enter] button in our keyboard
+-	Then click on "Authorize"
+-	As it is connected to the cluster from the Cloudshell terminal, do 
+-	`ls .kube`
+-	it says **"cache config gke_gcloud-auth-plugin_cache"**
+-	so they have it in the cluster. So the ".kube" folder is there.
+-	Now, cat the ".kube" directory. So, do
+-	`cat .kube/config`
+-	Now, copy the content of this file. Copy from
+-	***API version: v1 ------------:true***
+-	Now, go to your VS Code and bring up your VS Code terminal
+-	Still in your Home Directory in your VS Code, do
+-	`vi .kube/config`
+-	***{so we are creating this ".kube/config" file is in our local. So as to have that content you saw in the cluster available in our local as well, for us to use it to connect to the cluster,}*** Follow this process.
+-	Now change to ***insert*** mode
+-	Paste that content that you copied from Cloudshell cluster here.
+-	Now, change to escape mode then save and quit {:wq!}
+-	It errors out
+-	Paste the cluster connection command here and hit [enter]. It says
+-	it says "error: again **Fetching Cluster endpoint and auth data cluster endpoint and author data**
+-	Now, do this to log into gcloud
+-	`gcloud auth login`
+-	Now, follow the page and login to the Account that has Cluster there.
+-	Once you are login;
+
+-	
 -	recall and run the command again that is the cluster connection command which is
 -	it says critical action required
 -	now we have to install one more plug in for G key that is the key component. So copy this URL above in the critical action from HTTPS all the way to the end
