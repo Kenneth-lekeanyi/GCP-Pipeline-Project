@@ -425,3 +425,5 @@ So, first create a File in V.S Code and name it as
  - **nginx-replicaset.yaml**
  - ![Image](https://github.com/user-attachments/assets/ee36a8c6-7269-44e4-b759-0ee336e88ece)
 
+- # Now, our gke Cluster is up and running. Lets proceed with the project
+
