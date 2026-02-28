@@ -451,3 +451,146 @@ So, first create a File in V.S Code and name it as
 
 - # Now, our gke Cluster is up and running. Lets proceed with the project
 
+
+So, the setup is that did we first deploye to cluster one I see death cluster. And after an approval is done it will then diploid cluster 2 as the pro cluster.
+So the two clusters are already existing.
+So when we go to cloud deploye create a deliverer pipeline we shall be asked to select a target. 
+When under it again
+-	target one will be close to 1 or death Gloucester
+-	target 2 will be close to 2 or pro cluster
+-	all these two clusters will be selected in cloud deploy
+this will be done before creating the pipeline project. However this is a manual way of doing things.
+We are not going to do it this way. We are going to do it from our code or manifest files or number size
+here is the key to building to get all the manifest file and the application could https://github.com/Kenneth-lekeanyi/Deployment-CICD-gcp-Pipeline
+As seen in this kit AC repository, we shall be diploid 2 applications. The first one is the hello world app one and the second one is a Halo wars 2 application.
+One will be exposed on port 8080 why is second app will be exposed on port 8081
+we shall make the changes and push the court from our GitHub repository .
+But before that we have to create a cloud boot chigger and those it will create a cloud be pipeline.
+So let's start by going to the cloud also to create o'clock you trigger.
+Step One: Create a CloudBuild Trigger
+	So, navigate to the cloud view console
+	locate and click on triggers at the left
+	10 individual at the bottom click on create trigger
+	Name: gke-cicd
+	Region: us-east-1
+	Event: (Repository event that invokes trigger)
+-	[] Push to a branch {select this one}
+-	[] Push new tag
+-	[] Pull request
+	Source (Repository generation)
+-	[] 1st gen {select this one}
+-	[] 2nd gen
+	Repository {Here, we have to connect to our GitHub Repository}
+-	Click inside the box and click on “CONNECT NEW REPOSITORY”
+-	On the “Connect repository” page that pops up at the right,
+o	Select “GitHub” (CloudBuild GitHub App)
+o	Then click on “Continue” {This will start the authorization process.
+o	Now, Authenticate with GitHub. You will be redirected to GitHub to authorize Google CloudBuild GitHub App
+o	Choose to Grant Access to
+1)	[] All repositories
+2)	[] Only selected repositories {select this one}.
+o	Click now on “Install & Authorize”
+o	Then click on “CONNECT”. It should appear like this
+Repository
+Kenneth-lekeanyi/Deployment-CICD-gcp-pipeline(GitHub App
+Branch
+*
+
+o	Configuration
+[] Autodetected
+[] CloudBuild Configuration file (YAML or JSON) {select this one}
+[] Dockerfile
+[] Buildpacks
+Cloud Build configuration file location
+/cloudbuild.yaml
+Note that; this file is created in our VS Code and. It is present in our GitHub Repo. So, it will check for this file.
+Here is the content of this file
+Cloudbuild.yaml
+Line 1-5 of this file, CloudBuild will first be building a Docker image, using a Dockerfile that is present in App1.
+Line 9-11 of this file, it is pushing that Docker image to the Artifactory Registry.
+Then it goes to App2, same thing in line 13-15, it is building a Docker image using a Dockerfile that is located inside App2.
+Then, it is pushing that image to the Artifactory Registry in line 20 – 22.
+Line 31, we are executing a gcloud deploy apply, where we are applying the “Pipeline.yaml” file that is inside the “deploy” Folder
+So the “Pipeline.yaml” file is simply creating a Pipeline that we usually create manually in Cloud Deploy. But here, we are creating it using a manifest file and deploying it using the “gcloud deploy apply” command in line 31.
+In line 32 we are executive the deaf toriyama fi which is inside the diploid folder. And in line 33 we are executing their diploid Tori the proto DMF I which is equally inside the diploid folder and pointing to cluster one and two respectively India line 9 of the Devonport food.
+So inside this file we are creating a target that is first pointing at cluster one and then we create another target inside the prod folder which is pointing at cluster 2.
+Go to line 35 and create a release 1 wishes for my one year my fire bracket apple to Deanna this file has a deployement that together with the container image inside it is present on the the cognitive folder. And it has his service as well of tableau balancer. Same thing for upto still inside the communities folder. So we are diploid 2 containers here 14 up 1 and the other for up to. They redeploy as soon as we pushed the code using git commands. 
+So first of all still on cloud built click on save to save the cloud you trigger.
+So as soon as we push this good from our local it will step a cloud P pipeline. So, 
+bring up your terminal bash and ensure that you are indeed deployement CI CD GCP pipeline food. Open it in integrated terminal undo
+git add .
+git commit -m “adding Pipeline”
+git push
+As Soon as we hit it push, you triggered it cheeky CI CD pipeline. So go to cloud cancel and click on history
+after 10 minutes we see that cheeky CI CD pipeline has started
+now go to the artifactory history console and check each other image have been diploid there. So
+go to artifactory history repository
+then locate and click on cheeky report which is the name of the artifactory history that we created
+you should see the image there wish are: Flask-image
+quickstart-image 
+These are the names that we give to the to our image in line 10914 cloud MFA
+now go back to cloud and click again on history to check if all stages have been green have a green check pass or not
+you realize that the last dish 4 has filled
+click on the last dish Google slash cloud SDK latest to check the logs and see only and see why it failed.
+Scroll down the logs when we expand the last drop down it says cloud diploid delivery pipeline dot update denied on project gke CI CD pipeline. So cloud Diplo denied permission so it is a permission error
+this is because maybe we are using a wrong service account for our trigger so go to club U and click on trigger at the left. We are going to check the service account
+why under trigger click on TCC ICD that we are using for our trigger
+Scroll down to locate the service account section
+check if you have a service account selected or not we see here that we did not have any service account.
+Now select this service account to appear as follows
+Service account email
+856008859364-compute@developer.gserviceaccount.com
+So select it will appear like this above. At first we did not select any service account. That is the more reason why the last dish four failed.
+This service account holds most of the editor rule and we permit cloudy blue to deploye anything who everything
+now go to cloud built and click on history again and then you click on retry to retry the pipeline.
+If we do everything again from stage 1 to stage 4
+we see that all the stages of now succeeded
+so our cloud pipeline has completed here
+now go to cloud deploy
+in the cloud deploy console click on delivery pipelines
+then click on refresh at the top right
+you may see that HEKE dash CICD dash pipeline has come up
+under it or when you click on it we see that we have apps diploid the official
+up to that release that is 793
+2 release-ee793e0
+Not that this is all diploid inside the death cluster as you can see above
+as we can see it is diploid or they release into a death cluster on the cloud deploy.
+And it is waiting for some kind of leadership to review it and click on promote to promote it to prod as seen above she's currently pending depending stage.
+But before clicking on promote to promote it the product we have to check Facebook or if our application is running fine in a death cluster.
+For that go back to carbonate IC engine console and click on cluster one she saw a death cluster.
+There look it and click on workloads
+click on the flask deployment, we will try to access it
+Scroll down to locate and click on endpoint which is the flux service load balancer endpoint and appears like this
+Exposing services
+Name			Type			Endpoints
+Flask-service		Load balancer	104.197.252.145.8081	
+
+
+
+Success the application comes up
+so def is working fine
+check that the order up tool is working fine as well
+success
+now we can not promote this to our prod environment. So go to cloud deploy and click again on delivery pipeline at the left
+now click on promo. But before that let's check to ensure that nothing is actually running inside cluster 2 so
+go to carbonated engine and click on workloads at the left
+in the box of cluster use the drop down to select cluster 2 to appear as follows
+now we see that nothing is inside the cluster 2
+now go to cloud deployer and under the play delivery pipeline click on promote to promote from death to prod 7 as a manual approval stage
+it will show a popup page known as promote release up to release it is 793 is 0 for you to review some details there such as target
+it was approved Roland roller name faces
+now click on promote at the bottom
+now under delivery pipelines it will ask for review with the yellow colour painting on pending. So
+click on review
+then as up two is highlighted go to the right and click on review
+he discovered fire image so click below on approve
+now under cloud deploy and under deliver prime line we see that it has now deployed to prod
+now go back to the kinetic engine console and refresh
+you will now see that flash 2 has appeared there now click on it and then you click on it end point as well
+the application comes up successfully as well
+now any change that is done at the level of yes code and push to cloud build
+you can then go to club under history and see that the bill has started
+it will pretty image create the pipeline and push the image to the artifactory registry why the application is deployed in cloud deploye
+and once done we can promote it to production and we go to carbon attic engine console and test and confirm that application is coming up as required
+notepad she pulled ** **** up to 10 minutes to complete.
+
