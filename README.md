@@ -220,6 +220,30 @@ def main():
 
 # CICD PIPELINE TO DEPLOY APPLICATIONS ON GOOGLE KUBERNETES ENGINE (GKE) USING CLOUDBUILD $ CLOUD-DEPLOY.
 
+[![YouTube](https://img.shields.io/badge/YouTube-Video-green)](https://youtu.be/L_1qbt-Iii0?feature=shared)
+
+## Requirements
+
+To achieve our goal, we have the following requirements:
+- Deployment of two simple Flask applications (app1 & app2) on the GKE clusters.
+- Automation of the entire deployment process, triggered by a developer’s code push.
+- Dev-cluster deployment precedes production deployment, allowing for review before promoting to the prod-cluster.
+
+## Architecture
+
+![image](https://github.com/vishal-bulbule/gke-test/assets/143475073/66c914bb-4466-4a23-b977-f0880e1e1f12)
+
+## Technical Stack Summary
+
+This CI/CD pipeline leverages several key components:
+- Google Kubernetes Engine (GKE): Google’s managed Kubernetes service, providing a scalable and reliable platform for deploying containerized applications.
+- Cloud Build: A fully managed continuous integration and continuous delivery platform that allows developers to build, test, and deploy applications on Google Cloud Platform.
+- Cloud Deploy: A service for continuous delivery that automates the deployment of containerized applications to Google Kubernetes Engine and other platforms.
+- GitHub: A popular version control platform where developers collaborate, manage, and version control their codebase.
+
+## Solution
+
+
 **Objective:** ***To deploy Applications on GKE Cluster using CloudBuild and Cloud-Deploy.***
 - Here, we are implementing a complete automation or CICD Pipeline automation where users will push an Application Source Code to a git repository. Once it is pushed, it will trigger a CloudBuild to start the build automatically. This is done using a Build Trigger.
 - Here CloudBuild will build and push a docker image using the Application code and once it is done, it will pushed that image to an Artifactual Registry or Container Registry.
