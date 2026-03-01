@@ -246,13 +246,13 @@ This CI/CD pipeline leverages several key components:
 
 **Objective:** ***To deploy Applications on GKE Cluster using CloudBuild and Cloud-Deploy.***
 - Here, we are implementing a complete automation or CICD Pipeline automation where users will push an Application Source Code to a git repository. Once it is pushed, it will trigger a CloudBuild to start the build automatically. This is done using a Build Trigger.
-- Here CloudBuild will build and push a docker image using the Application code and once it is done, it will pushed that image to an Artifactual Registry or Container Registry.
+- Here CloudBuild will build and push a docker image using the Application code and once it is done, it will pushed that image to an Artifactory Registry or Container Registry.
 - And that will also trigger a Cloud-Deploy pipeline. Cloud-Deploy will first deploy the latest container image or docker image to the Dev GKE Cluster. And when everything is tested in the Dev Kubernetes Cluster, then you can promote it to Production in the Prod Cluster. 
-- But before it goes to production, there is an option that we set up which is "**Manual Approval**" before it proceeded into the Production Environment.
-And once the approval is done it will then be diploid into a cognitive engine.
+- But before it goes to production, there is an option that we set up, which is "**Manual Approval or Promotion**" before it proceeded into the Production Environment.
+And once the approval is done it will then be deployed into a GKE.
 - So, Cloud-Deploy is a managed service that automates delivery of your Applications to a series of environments such a GKE and cloud-Run.
-- Therefore in cloud-Deploy, we basically create a Pipeline wherein, in that Pipeline we mention the target. This target is nothing but a GKE Cluster. And so anytime that you want to deploye a new code you just create a release. And a release is nothing but diploying or promoting your code or releasing a new code to the existing application.
-- Then we have Cloud-Deploy that we can use manifest files to push it to the Cluster. And with that action at the back in it will create your community scaffold file itself for the application.
+- Therefore in Cloud-Deploy, we basically create a Pipeline wherein, in that Pipeline we mention the target. This target is nothing but a GKE Cluster. And so anytime that you want to deploy a new code you just create a release. And a release is nothing but deploying or promoting your code or releasing a new code to the existing Application.
+- Then we have Cloud-Deploy that we can use manifest files to push it to the Cluster. And with that action at the backend, it will create your kubernetes scaffold file itself for the Application.
 - We shall have two clusters wherein cluster1 will be the Dev Cluster while Cluster2 will be the Prod Cluster.
 - So, go to the Kubernetes Engine console and create 2 clusters first.
 
@@ -452,10 +452,12 @@ So, first create a File in V.S Code and name it as
 - # Now, our gke Cluster is up and running. Lets proceed with the project
 
 
-So, the setup is that did we first deploye to cluster one I see death cluster. And after an approval is done it will then diploid cluster 2 as the pro cluster.
-So the two clusters are already existing.
-So when we go to cloud deploye create a deliverer pipeline we shall be asked to select a target. 
-When under it again
+- So, the setup is that, it will first deploy to Cluster1 I as a Dev Cluster. And after an Approval is done, it will then deploy to Cluster2 as the Prod Cluster.
+- At this time, the two clusters are already existing.
+- So, when we go to Cloud-Deploy to creat a deliverer pipeline, we shall be asked to select a target. 
+- Wherein, under 'Targets',
+  - Target1 will be Cluster1 (or Dev Cluster)
+  - Target2 will be Cluster2 (or Prod Cluster
 -	target one will be close to 1 or death Gloucester
 -	target 2 will be close to 2 or pro cluster
 -	all these two clusters will be selected in cloud deploy
