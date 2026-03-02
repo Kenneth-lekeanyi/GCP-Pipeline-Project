@@ -503,8 +503,8 @@ So, first create a File in V.S Code and name it as
   - [/cloudbuild.yaml] ***{Note, this file is created in our VS Code and it is present in our GitHub Repo. So, it will check for this file}***
 - Here is the content of this file
 - **Cloudbuild.yaml**
-  
-Line 1-5 of this file, CloudBuild will first be building a Docker image, using a Dockerfile that is present in App1.
+  <img width="1615" height="809" alt="Image" src="https://github.com/user-attachments/assets/057c060e-2fe3-4e47-9ea9-df329757b0b2" />
+- In line 1-5 of this file, CloudBuild will first be building a Docker image, using a Dockerfile that is present in App1.
 Line 9-11 of this file, it is pushing that Docker image to the Artifactory Registry.
 Then it goes to App2, same thing in line 13-15, it is building a Docker image using a Dockerfile that is located inside App2.
 Then, it is pushing that image to the Artifactory Registry in line 20 – 22.
