@@ -495,31 +495,34 @@ So, first create a File in V.S Code and name it as
   - Branch
   - [*]
 - Configuration.
- - [] Autodetected
- - [] CloudBuild Configuration file (YAML or JSON). {select this one}
- - [] Dockerfile
- - [] Buildpacks
+   - [] Autodetected
+   - [] CloudBuild Configuration file (YAML or JSON). {select this one}
+   - [] Dockerfile
+   - [] Buildpacks
  - Cloud Build configuration file location
   - [/cloudbuild.yaml] ***{Note, this file is created in our VS Code and it is present in our GitHub Repo. So, it will check for this file}***
 - Here is the content of this file
 - **Cloudbuild.yaml**
   <img width="1615" height="809" alt="Image" src="https://github.com/user-attachments/assets/057c060e-2fe3-4e47-9ea9-df329757b0b2" />
-- In line 1-5 of this file, CloudBuild will first be building a Docker image, using a Dockerfile that is present in App1.
-Line 9-11 of this file, it is pushing that Docker image to the Artifactory Registry.
-Then it goes to App2, same thing in line 13-15, it is building a Docker image using a Dockerfile that is located inside App2.
-Then, it is pushing that image to the Artifactory Registry in line 20 – 22.
-Line 31, we are executing a gcloud deploy apply, where we are applying the “Pipeline.yaml” file that is inside the “deploy” Folder
-So the “Pipeline.yaml” file is simply creating a Pipeline that we usually create manually in Cloud Deploy. But here, we are creating it using a manifest file and deploying it using the “gcloud deploy apply” command in line 31.
-In line 32 we are executive the deaf toriyama fi which is inside the diploid folder. And in line 33 we are executing their diploid Tori the proto DMF I which is equally inside the diploid folder and pointing to cluster one and two respectively India line 9 of the Devonport food.
-So inside this file we are creating a target that is first pointing at cluster one and then we create another target inside the prod folder which is pointing at cluster 2.
-Go to line 35 and create a release 1 wishes for my one year my fire bracket apple to Deanna this file has a deployement that together with the container image inside it is present on the the cognitive folder. And it has his service as well of tableau balancer. Same thing for upto still inside the communities folder. So we are diploid 2 containers here 14 up 1 and the other for up to. They redeploy as soon as we pushed the code using git commands. 
-So first of all still on cloud built click on save to save the cloud you trigger.
-So as soon as we push this good from our local it will step a cloud P pipeline. So, 
-bring up your terminal bash and ensure that you are indeed deployement CI CD GCP pipeline food. Open it in integrated terminal undo
-git add .
-git commit -m “adding Pipeline”
-git push
-As Soon as we hit it push, you triggered it cheeky CI CD pipeline. So go to cloud cancel and click on history
+- In line 1 - 5 of this file, CloudBuild will first be building a Docker image, using a Dockerfile that is present in App1.
+- Then, in line 9 - 11 of this file, it is pushing that Docker image to the Artifactory Registry.
+- Then it goes to App2, same thing in line 13-15, it is building a Docker image using a Dockerfile that is located inside App2.
+- Then, it is pushing that image to the Artifactory Registry in line 20 – 22.
+- In line 31, we are executing a gcloud deploy apply; wherein, we are applying the “Pipeline.yaml” file that is inside the “deploy” Folder
+- So, the “Pipeline.yaml” file is simply creating a Pipeline that we usually create manually in Cloud Deploy. But here, we are creating it using a manifest file and deploying it using the “gcloud deploy apply” command in line 31.
+- In line 32, we are executive the dev.yaml file (which is inside the deploy folder). And in line 33, we are executing the prod.yaml file (which is equally inside the deploy folder and pointing to cluster1 and cluster2 respectively in their line 9 of the dev & prod Folder).
+- So, inside these files, we are creating a target that is first pointing at cluster1 and then we create another target inside the prod folder which is pointing at cluster2.
+- After that, it will go to line 35 and create a release1 which is for my app1 yaml file (**app.yaml**). This file has a deployment that together with a container image inside it, (it is present on the the kubernetes folder). And it has a **Service** as well of type **Load balancer**. Same thing for App2, still inside the kubernetes folder.
+- So, we are deploying 2 containers here. One for app1 and the other for App2. These will deploy as soon as we pushed the code using git commands. 
+- So, first of all still on CloudBuilt, click on "save" to save the CloudBuild trigger.
+- So, as soon as we push this Code from our local using Git, it will start a CloudBuild pipeline.
+- So, 
+- Bring up your VS Code Terminal or Gitbash and ensure that you are in the **Deployement-CICD-gcp-pipeline** folder. Open it in integrated terminal. So, do
+ - `git add .`
+ - `git commit -m “adding Pipeline”`
+ - `git push`
+ - 
+- As Soon as we hit it push, you triggered it cheeky CI CD pipeline. So go to cloud cancel and click on history
 after 10 minutes we see that cheeky CI CD pipeline has started
 now go to the artifactory history console and check each other image have been diploid there. So
 go to artifactory history repository
