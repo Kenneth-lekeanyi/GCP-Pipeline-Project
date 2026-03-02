@@ -451,63 +451,59 @@ So, first create a File in V.S Code and name it as
 
 - # Now, our gke Cluster is up and running. Lets proceed with the project
 
-
-- So, the setup is that, it will first deploy to Cluster1 I as a Dev Cluster. And after an Approval is done, it will then deploy to Cluster2 as the Prod Cluster.
+- So, the setup here is that, it will first deploy to Cluster1 as a Dev Cluster. And after an Approval(**Promotion**) is done, it will then deploy to Cluster2 as the Prod Cluster.
 - At this time, the two clusters are already existing.
 - So, when we go to Cloud-Deploy to creat a deliverer pipeline, we shall be asked to select a target. 
 - Wherein, under 'Targets',
   - Target1 will be Cluster1 (or Dev Cluster)
-  - Target2 will be Cluster2 (or Prod Cluster
--	target one will be close to 1 or death Gloucester
--	target 2 will be close to 2 or pro cluster
--	all these two clusters will be selected in cloud deploy
-this will be done before creating the pipeline project. However this is a manual way of doing things.
-We are not going to do it this way. We are going to do it from our code or manifest files or number size
-here is the key to building to get all the manifest file and the application could https://github.com/Kenneth-lekeanyi/Deployment-CICD-gcp-Pipeline
-As seen in this kit AC repository, we shall be diploid 2 applications. The first one is the hello world app one and the second one is a Halo wars 2 application.
-One will be exposed on port 8080 why is second app will be exposed on port 8081
-we shall make the changes and push the court from our GitHub repository .
-But before that we have to create a cloud boot chigger and those it will create a cloud be pipeline.
-So let's start by going to the cloud also to create o'clock you trigger.
-Step One: Create a CloudBuild Trigger
-	So, navigate to the cloud view console
-	locate and click on triggers at the left
-	10 individual at the bottom click on create trigger
-	Name: gke-cicd
-	Region: us-east-1
-	Event: (Repository event that invokes trigger)
--	[] Push to a branch {select this one}
--	[] Push new tag
--	[] Pull request
-	Source (Repository generation)
--	[] 1st gen {select this one}
--	[] 2nd gen
-	Repository {Here, we have to connect to our GitHub Repository}
--	Click inside the box and click on “CONNECT NEW REPOSITORY”
--	On the “Connect repository” page that pops up at the right,
-o	Select “GitHub” (CloudBuild GitHub App)
-o	Then click on “Continue” {This will start the authorization process.
-o	Now, Authenticate with GitHub. You will be redirected to GitHub to authorize Google CloudBuild GitHub App
-o	Choose to Grant Access to
-1)	[] All repositories
-2)	[] Only selected repositories {select this one}.
-o	Click now on “Install & Authorize”
-o	Then click on “CONNECT”. It should appear like this
-Repository
-Kenneth-lekeanyi/Deployment-CICD-gcp-pipeline(GitHub App
-Branch
-*
-
-o	Configuration
-[] Autodetected
-[] CloudBuild Configuration file (YAML or JSON) {select this one}
-[] Dockerfile
-[] Buildpacks
-Cloud Build configuration file location
-/cloudbuild.yaml
-Note that; this file is created in our VS Code and. It is present in our GitHub Repo. So, it will check for this file.
-Here is the content of this file
-Cloudbuild.yaml
+  - Target2 will be Cluster2 (or Prod Cluster) ***{All these 2 clusters will be selected in Cloud-Deploy}***
+- This will be done before creating the pipeline project. However this is a manual way of doing things.
+- We are not going to do it this way. We are going to do it from our code or manifest files or yaml Files.
+- Here is the Link to get all the manifest files and the Application Source Code [https://github.com/Kenneth-lekeanyi/Deployment-CICD-gcp-Pipeline]
+- As seen in this GitHub Repository, we shall be deploying 2 applications. The first one is the "Hello World App1" and the second one is a "Hallo World App2" Application.
+- App1 will be exposed on port=8080 while App2 will be exposed on port=8081
+- We shall make the changes and push the Code from our GitHub Repository.
+- But before that, we have to create a CloudBuild Trigger and thus it will create a CloudBuild Pipeline.
+- So, let's start by going to the Cloud console also to create a CloudBuild trigger.
+  
+# Step One: Create a CloudBuild Trigger
+- So, navigate to the CloudBuild Console.
+- Locate and click on "Triggers" at the left.
+- Then, in the middle at the bottom, click on "CREATE TRIGGER".
+  - Name: **gke-cicd**
+  - Region: **us-east-1**
+  - Event: **(Repository event that invokes trigger)**
+  - [] Push to a branch {select this one}
+  - [] Push new tag
+  - [] Pull request
+- Source (Repository generation)
+  - [] 1st gen {select this one}
+  - [] 2nd gen
+- Repository. ***{Here, we have to connect to our GitHub Repository}***
+  - Click inside the box and click on “CONNECT NEW REPOSITORY”
+  - On the “Connect repository” page that pops up at the right,
+  - Select “GitHub” (CloudBuild GitHub App)
+  - Then click on “Continue” {This will start the authorization process.}
+  - Now, Authenticate with GitHub. You will be redirected to GitHub to authorize Google CloudBuild GitHub App
+  - Choose to Grant Access to
+    1)	[] All repositories
+    2)	[] Only selected repositories {select this one}.
+- Click now on “Install & Authorize”
+  - Then click on “CONNECT”. It should appear like this
+  - Repository
+  - [Kenneth-lekeanyi/Deployment-CICD-gcp-pipeline(GitHub App]
+  - Branch
+  - [*]
+- Configuration.
+ - [] Autodetected
+ - [] CloudBuild Configuration file (YAML or JSON). {select this one}
+ - [] Dockerfile
+ - [] Buildpacks
+ - Cloud Build configuration file location
+  - [/cloudbuild.yaml] ***{Note, this file is created in our VS Code and it is present in our GitHub Repo. So, it will check for this file}***
+- Here is the content of this file
+- **Cloudbuild.yaml**
+  
 Line 1-5 of this file, CloudBuild will first be building a Docker image, using a Dockerfile that is present in App1.
 Line 9-11 of this file, it is pushing that Docker image to the Artifactory Registry.
 Then it goes to App2, same thing in line 13-15, it is building a Docker image using a Dockerfile that is located inside App2.
