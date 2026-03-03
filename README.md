@@ -522,36 +522,43 @@ So, first create a File in V.S Code and name it as
  - `git commit -m “adding Pipeline”`
  - `git push`
  - 
-- As Soon as we hit it push, you triggered it cheeky CI CD pipeline. So go to cloud cancel and click on history
-after 10 minutes we see that cheeky CI CD pipeline has started
-now go to the artifactory history console and check each other image have been diploid there. So
-go to artifactory history repository
-then locate and click on cheeky report which is the name of the artifactory history that we created
-you should see the image there wish are: Flask-image
-quickstart-image 
-These are the names that we give to the to our image in line 10914 cloud MFA
-now go back to cloud and click again on history to check if all stages have been green have a green check pass or not
-you realize that the last dish 4 has filled
-click on the last dish Google slash cloud SDK latest to check the logs and see only and see why it failed.
-Scroll down the logs when we expand the last drop down it says cloud diploid delivery pipeline dot update denied on project gke CI CD pipeline. So cloud Diplo denied permission so it is a permission error
-this is because maybe we are using a wrong service account for our trigger so go to club U and click on trigger at the left. We are going to check the service account
-why under trigger click on TCC ICD that we are using for our trigger
-Scroll down to locate the service account section
-check if you have a service account selected or not we see here that we did not have any service account.
-Now select this service account to appear as follows
-Service account email
-856008859364-compute@developer.gserviceaccount.com
-So select it will appear like this above. At first we did not select any service account. That is the more reason why the last dish four failed.
-This service account holds most of the editor rule and we permit cloudy blue to deploye anything who everything
-now go to cloud built and click on history again and then you click on retry to retry the pipeline.
-If we do everything again from stage 1 to stage 4
-we see that all the stages of now succeeded
-so our cloud pipeline has completed here
-now go to cloud deploy
-in the cloud deploy console click on delivery pipelines
-then click on refresh at the top right
-you may see that HEKE dash CICD dash pipeline has come up
-under it or when you click on it we see that we have apps diploid the official
+- As Soon as we hit git push, it will trigger the gke-cicd pipeline. So,
+- Go to the CloudBuild Console and click on "History"
+- After a minutes, you will see that the gke-cicd pipeline has started.
+- Now, go to the "Artifactory Registry" console and check if the images have been deployed there.
+- So, 
+  - Go to "Artifactory Registory" and click on "repository"
+  - Then locate and click on **gke-repo** which is the name of the Artifactory Registory that we created.
+  - You should see the images there which are:
+    - **Flask-image**
+    - **quickstart-image**   ***{These are the names that we gave to our images in line 10 and line 14 of our Cloudbuild.yaml file}***
+- Now, go back to CloudBuild and click again on "History" to check if all stages have a green check pass or not.
+- We realize that the last stage 4 has failed.
+- Click on the last stage 4 (google/cloud-sdk-latest) to check the logs and see why it failed.
+- Scroll down the logs, when we expand the last drop down, it says ***clouddeploy.deliveryPipeline.update denied on project...gke-cicd-pipeline.*** So Cloud Deploy denied permissions. so it is a permission error. (This is because maybe we are using a wrong Serviceaccount for our trigger)
+- So, go to "CloudBuild" and click on "triggers" at the left. (We are going to check the Serviceaccount).
+- While under "trigger", click on **gke-cicd** that we are using for our trigger.
+- Scroll down to locate the Serviceaccount section
+ - check if you have a Serviceaccount selected or not.
+ - We see here that, we did not select any Serviceaccount.
+- Now, select this Serviceaccount to appear as follows
+- Service account email:
+- [856008859364-compute@developer.gserviceaccount.com]
+- So, at first, we did not select any Serviceaccount. That is the more reason why the last stage 4 failed.
+- This Serviceaccount holds most of the editor role and will permit Cloudy-Deploy to deploy everything.
+- Now, go to CloudBuilt and click on "History" again and then you click on "Retry" to retry the pipeline.
+  - It will do everything again from stage 1 to stage 4
+  - We see that all the stages have now succeeded.
+- So, our CloudBuild pipeline has completed here
+- 
+- Now, go to **[Cloud deploy]***
+- In the Cloud deploy console and click on "delivery pipelines"
+- Then click on "REFRESH" at the top right.
+- You mwill see that **gke-cicd-pipeline** has come up.
+- Under it or when you click on it, you will that, we have Apps the official
+
+
+
 up to that release that is 793
 2 release-ee793e0
 Not that this is all diploid inside the death cluster as you can see above
