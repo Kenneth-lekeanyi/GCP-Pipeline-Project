@@ -555,50 +555,48 @@ So, first create a File in V.S Code and name it as
 - In the Cloud deploy console and click on "delivery pipelines"
 - Then click on "REFRESH" at the top right.
 - You mwill see that **gke-cicd-pipeline** has come up.
-- Under it or when you click on it, you will that, we have Apps the official
+- Under it or when you click on it, you will see that, we have Apps deployed there which are;
+    - **app2-release-ee793eo**
+    - **app1-release-ee793eo**
+- Note that, this is all deployed inside the dev cluster as you can see above.
+- As we can see, it is deployed all the releases into a Dev Cluster under Cloud Deploy.
+- And it is waiting for some kind of leadership to review it and click on **"Promote"** to promote it to Prod as seen above. (which is currently pending or at pending stage).
+- But, before clicking on "Promote", to promote it the Production, we have to check first of all if our Application is running fine in a Dev Cluster.
+ - For that, go back to "Google kubernetes Engine" console and click on cluster1 (which is our dev cluster).
+ - There, locate and click on "Workloads".
+ - Click on "flask deployment", we would try to access it.
+ - Scroll down to locate and click on Endpoint (which is the flask Service Load balancer endpoint and appears like this.)
+- **Exposing services**
+- **Name			Type			Endpoints**
+- Flask-service		Load balancer	104.197.252.145.8081 
+- Click on this Endpoint to see if the Application comes up
+   - [Success!!!! the Application comes up]
+- So, the dev is working fine.
+- Check that the other App2 is working fine as well.
+   - Success!!!!!
 
-
-
-up to that release that is 793
-2 release-ee793e0
-Not that this is all diploid inside the death cluster as you can see above
-as we can see it is diploid or they release into a death cluster on the cloud deploy.
-And it is waiting for some kind of leadership to review it and click on promote to promote it to prod as seen above she's currently pending depending stage.
-But before clicking on promote to promote it the product we have to check Facebook or if our application is running fine in a death cluster.
-For that go back to carbonate IC engine console and click on cluster one she saw a death cluster.
-There look it and click on workloads
-click on the flask deployment, we will try to access it
-Scroll down to locate and click on endpoint which is the flux service load balancer endpoint and appears like this
-Exposing services
-Name			Type			Endpoints
-Flask-service		Load balancer	104.197.252.145.8081	
-
-
-
-Success the application comes up
-so def is working fine
-check that the order up tool is working fine as well
-success
-now we can not promote this to our prod environment. So go to cloud deploy and click again on delivery pipeline at the left
-now click on promo. But before that let's check to ensure that nothing is actually running inside cluster 2 so
-go to carbonated engine and click on workloads at the left
-in the box of cluster use the drop down to select cluster 2 to appear as follows
-now we see that nothing is inside the cluster 2
-now go to cloud deployer and under the play delivery pipeline click on promote to promote from death to prod 7 as a manual approval stage
-it will show a popup page known as promote release up to release it is 793 is 0 for you to review some details there such as target
-it was approved Roland roller name faces
-now click on promote at the bottom
-now under delivery pipelines it will ask for review with the yellow colour painting on pending. So
-click on review
-then as up two is highlighted go to the right and click on review
-he discovered fire image so click below on approve
-now under cloud deploy and under deliver prime line we see that it has now deployed to prod
-now go back to the kinetic engine console and refresh
-you will now see that flash 2 has appeared there now click on it and then you click on it end point as well
-the application comes up successfully as well
-now any change that is done at the level of yes code and push to cloud build
-you can then go to club under history and see that the bill has started
-it will pretty image create the pipeline and push the image to the artifactory registry why the application is deployed in cloud deploye
-and once done we can promote it to production and we go to carbon attic engine console and test and confirm that application is coming up as required
-notepad she pulled ** **** up to 10 minutes to complete.
+- At this time, we can now promote this to our Prod Environment. So,
+- Go to Cloud Deploy and click again on "Delivery pipeline" at the left.
+- Now, click on "**Promote**". But before that let's check to ensure that nothing is actually running inside Cluster2. So,
+- Go to "Google Kubernetes Engine" console and click on "Workloads" at the left.
+- In the box of cluster, use the drop down to select cluster2 to appear as follows.
+- Now, we see that nothing is inside the Cluster2.
+- Now, go to "Cloud-Deploy" and under the "delivery pipeline", click on "**Promote**", (to promote from Dev to Prod" (serving as a manual approval stage).
+- It will show a pop-up page known as "**Promote release app2-release-ee793eo**" for you to review some details there such as;
+  - Target = **Prod**
+  - Rollout name = **app2-release-ee793eo-to-prod-2001**
+  - Phase = **Stable**
+- Now, click on "**PROMOTE**" at the bottom.
+- Now, under delivery pipelines it will ask for "Review" with the yellow colour painting on "pending". So
+- Click on "review".
+- Then as "app2" is highlighted, go to the right and click on "REVIEW".
+- Here, the **Scaffold** file emerges. So, click below on "APPROVE".
+- Now, under Cloud-Deploy and under "Delivery Pipeline", we see that it has now deployed to Prod.
+- Now, go back to the "Google Kubernetes Engine" console and refresh. You will now see that Flask2 has appeared there.
+- Now, click on it and then you click on its Endpoint as well.
+  --- Application comes up successfully as well ----
+- Now, any change that is done at the level of V.S Code and push to CloudBuild, you can then go to CloudBuild under "History" and see that the build has started.
+- It will build the image, create the Pipeline and push the image to the Artifactory Registry, while the Application is deployed in Cloud-Deploy.
+- And once done, we can promote it to production and we go to "Google Kubernetes Engine" console and test or confirm that Application is coming up as required.
+- Note, that each build may take up to 10 minutes to complete.
 
